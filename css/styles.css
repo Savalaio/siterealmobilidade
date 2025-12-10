@@ -1,0 +1,679 @@
+/* Reset & base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --green: #1b5e3f;
+  --lime: #84cc16;
+  --dark: #0b1220;
+  --muted: #6b7280;
+  --white: #fff;
+  --maxWidth: 1200px;
+}
+body {
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  color: #fff;
+  line-height: 1.5;
+  background: #111;
+}
+.container {
+  max-width: var(--maxWidth);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Header */
+.site-header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background: rgba(15, 23, 36, 0.75);
+  backdrop-filter: blur(10px);
+  transition: 0.25s ease-in-out;
+}
+
+.site-header.scrolled {
+  background: rgba(15, 23, 36, 0.98);
+  padding-block: 6px;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 0;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.logo img {
+  height: 44px;
+  border-radius: 6px;
+}
+.brand {
+  font-weight: 800;
+}
+.nav-desktop {
+  display: flex;
+  gap: 1.2rem;
+}
+.nav-desktop a {
+  font-weight: 600;
+  color: var(--white);
+  text-decoration: none;
+}
+.nav-desktop a {
+  font-weight: 600;
+  color: var(--white);
+  text-decoration: none;
+  position: relative;
+  padding: 0.4rem 0.6rem;
+  transition: all 0.3s ease;
+}
+
+/* EFEITO HOVER MODERNO */
+.nav-desktop a:hover {
+  color: var(--green);
+  transform: scale(1.08);
+}
+
+/* LINHA ANIMADA EMBAIXO */
+.nav-desktop a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0%;
+  height: 2px;
+  background: var(--green);
+  transition: width 0.3s ease;
+}
+
+.nav-desktop a:hover::after {
+  width: 100%;
+}
+
+/* GLOW SUAVE */
+.nav-desktop a:hover {
+  text-shadow: 0 0 8px var(--green);
+}
+.btn-cta {
+  background: linear-gradient(135deg, var(--green), var(--lime));
+  color: var(--white);
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  font-weight: 700;
+}
+.menu-toggle {
+  display: none;
+  border: 0;
+  background: none;
+  padding: 0.4rem;
+  cursor: pointer;
+}
+.menu-toggle span {
+  display: block;
+  width: 26px;
+  height: 3px;
+  background: #fff;
+  margin: 5px 0;
+  border-radius: 3px;
+}
+
+/* Mobile nav */
+.mobile-nav {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 120;
+  transition: opacity 0.25s;
+}
+.mobile-nav-inner {
+  width: 320px;
+  background: #111;
+  height: 100vh;
+  padding: 2rem;
+  overflow: auto;
+}
+.mobile-nav a {
+  display: block;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: var(--white);
+}
+.mobile-nav[aria-hidden="true"] {
+  pointer-events: none;
+  opacity: 0;
+}
+.mobile-nav[aria-hidden="false"] {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #000;
+}
+.hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.hero-poster {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.6);
+  z-index: 0;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.45) 0%,
+    rgba(0, 0, 0, 0.25) 50%,
+    rgba(0, 0, 0, 0.55) 100%
+  );
+  z-index: 2;
+}
+.hero-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  color: var(--white);
+  padding: 1rem;
+  width: 100%;
+  max-width: 980px;
+}
+.hero-content h1 {
+  margin-bottom: 150px; /* distância do H1 para o parágrafo */
+  font-size: clamp(28px, 6vw, 56px);
+  font-weight: 800;
+}
+.hero-buttons {
+  margin-top: 1.2rem;
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.btn {
+  display: inline-block;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+/* Botões gerais */
+.hero-buttons .btn {
+  display: inline-block;
+  padding: 14px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+/* Botão primário (preto) */
+/* ===== BOTÕES MELHORADOS ===== */
+.hero-buttons .btn {
+  padding: 14px 26px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 14px;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* botão transparente */
+.btn-primary {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-3px);
+}
+
+/* botão transparente forte */
+.btn-primary-outline {
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.45);
+  color: #fff;
+}
+.btn-primary-outline:hover {
+  background: rgba(255, 255, 255, 0.35);
+  transform: translateY(-3px);
+}
+
+/* botão WhatsApp (mantendo seus verdes originais) */
+.btn-wpp {
+  background: linear-gradient(135deg, var(--green), var(--lime));
+  color: #fff;
+  border: 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+.btn-wpp:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+/* Alinhamento dos botões */
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+/* FEATURES */
+.features {
+  padding: 3.2rem 1rem;
+}
+.section-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 0.6rem;
+}
+.section-subtitle {
+  text-align: center;
+  color: var(--muted);
+  max-width: 900px;
+  margin: 0 auto 1.6rem;
+}
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+.feature-card {
+  background: #111;
+  padding: 4.1rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  text-align: center;
+}
+.feature-icon {
+  font-size: 26px;
+  margin-bottom: 0.6rem;
+}
+
+/* VIDEO HERO */
+.video-hero {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.video-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 2;
+}
+.video-content {
+  position: relative;
+  z-index: 3;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  max-width: 900px;
+}
+
+/* ===== DEPOIMENTOS (CARROSSEL) ===== */
+.testimonials {
+  padding: 3.2rem 1rem;
+}
+.carousel-wrapper {
+  max-width: 980px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.carousel {
+  display: flex;
+  transition: transform 0.45s ease;
+}
+.carousel-item {
+  min-width: 100%;
+  padding: 2rem;
+  text-align: center;
+  background: linear-gradient(180deg, #111, #111);
+}
+.carousel-controls {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+/* MAP */
+.map-section {
+  padding: 3.2rem 1rem;
+}
+.map-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 50.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.map-wrapper iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 12px;
+}
+
+/* CTA */
+.cta-section {
+  background: linear-gradient(180deg, #0f1724, #07101a);
+  color: #fff;
+  padding: 3.2rem 1rem;
+}
+.cta-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* FOOTER */
+.site-footer {
+  background: #0f1724;
+  color: #cbd5e1;
+  padding: 2.2rem 0rem;
+}
+.footer-grid {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.footer-grid h4 {
+  color: #fff;
+  margin-bottom: 0.6rem;
+}
+
+/* CHAT */
+.chatbot-button {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--green), var(--lime));
+  color: #fff;
+  font-size: 26px;
+  z-index: 9999;
+  cursor: pointer;
+}
+.chatbot-modal {
+  position: fixed;
+  right: 20px;
+  bottom: 100px;
+  width: 360px;
+  height: 520px;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 18px 45px rgba(2, 6, 23, 0.45);
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 9999;
+}
+.chatbot-modal.open {
+  display: flex;
+}
+.chatbot-header {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+  padding: 14px;
+  background: linear-gradient(135deg, var(--green), var(--lime));
+  color: #fff;
+}
+.chatbot-header img {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.15);
+}
+.chatbot-messages {
+  flex: 1;
+  padding: 12px;
+  overflow: auto;
+  background: #f7faf9;
+}
+.msg {
+  display: inline-block;
+  padding: 0.6rem 0.8rem;
+  border-radius: 12px;
+  margin: 0.4rem 0;
+  max-width: 80%;
+}
+.msg.bot {
+  background: #fff;
+  border: 1px solid #e6e9ec;
+  color: #111;
+}
+.msg.user {
+  background: linear-gradient(135deg, var(--green), var(--lime));
+  color: #fff;
+  margin-left: auto;
+}
+.chatbot-input {
+  display: flex;
+  gap: 0.6rem;
+  padding: 12px;
+  border-top: 1px solid #e6e6e6;
+}
+.chatbot-input input {
+  flex: 1;
+  padding: 0.8rem;
+  border-radius: 10px;
+  border: 1px solid #e6e6e6;
+}
+.chatbot-input button {
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--green), var(--lime));
+  border: 0;
+  color: #fff;
+  font-weight: 700;
+}
+/* Botão WhatsApp pulsante */
+.btn-wpp {
+  background: linear-gradient(135deg, var(--green), var(--lime));
+  color: #fff;
+  font-weight: 600;
+  animation: pulseWpp 1.6s infinite ease-in-out;
+  border: none;
+  transform: scale(1);
+}
+.footer-whatsapp {
+  background: linear-gradient(90deg, var(--green), var(--lime));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}
+.whatsapp-button {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 65px;
+  height: 65px;
+  background-color: #25d366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  z-index: 99999;
+  animation: pulse 1.4s infinite ease-in-out;
+}
+
+.whatsapp-button img {
+  width: 35px;
+  height: 35px;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+  }
+  70% {
+    transform: scale(1.15);
+    box-shadow: 0 0 0 20px rgba(37, 211, 102, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+@keyframes pulseWpp {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
+  }
+  70% {
+    transform: scale(1.06);
+    box-shadow: 0 0 18px 8px rgba(37, 211, 102, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+/* responsive */
+@media (max-width: 900px) {
+  .nav-desktop {
+    display: none;
+  }
+  .menu-toggle {
+    display: block;
+  }
+  .hero {
+    height: 40vh;
+    min-height: 400px;
+  }
+  .chatbot-modal {
+    right: 0px;
+    left: 10px;
+    width: auto;
+    height: 64vh;
+    bottom: 90px;
+  }
+  .hero-content h1 {
+    font-size: clamp(22px, 6vw, 38px);
+  }
+  .mobile-nav-inner {
+    width: 100%;
+    max-width: 360px;
+  }
+  /* ===== VÍDEO DE FUNDO RESPONSIVO ===== */
+  #video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover; /* Faz o vídeo preencher sem cortar errado */
+    z-index: -1;
+    filter: brightness(0.65); /* escurece um pouco para o texto ficar visível */
+  }
+
+  /* Garante que o header fica por cima do vídeo */
+  header,
+  .hero-content {
+    position: relative;
+    z-index: 5;
+  }
+  /* ===== MOBILE ESPECIAL (VÍDEO AJUSTADO) ===== */
+  @media (max-width: 768px) {
+    .hero {
+      height: 6cqh;
+      min-height: 360px;
+    }
+    .hero-media video {
+      margin-top: -0;
+      height: 27vh; /* Altura ideal no celular */
+      width: 100%;
+      /* height: 100%; */
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .hero-content {
+      top: 60%;
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+    }
+
+    .hero-content h1 {
+      margin-bottom: 40px;
+      font-size: 1.4rem;
+      line-height: 1.3rem;
+    }
+    /* Move o vídeo para baixo do header */
+    .hero {
+      margin-top: 75px; /* Aumente ou diminua se quiser */
+    }
+  }
+}
