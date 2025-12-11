@@ -212,7 +212,7 @@ body {
   max-width: 980px;
 }
 .hero-content h1 {
-  margin-bottom: 150px; /* distância do H1 para o parágrafo */
+  margin-bottom: 150px; /* distânca do H1 para o parágrafo */
   font-size: clamp(28px, 6vw, 56px);
   font-weight: 800;
 }
@@ -630,20 +630,21 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 50vw;
+    height: 50vh;
     object-fit: cover; /* Faz o vídeo preencher sem cortar errado */
-    z-index: -1;
+    z-index: -10;
     filter: brightness(0.65); /* escurece um pouco para o texto ficar visível */
+    height: 7vh; /* Altura ideal no celular */
   }
 
-  /* Garante que o header fica por cima do vídeo */
+  /* Garante que o header fica por  do vídeo */
   header,
   .hero-content {
     position: relative;
     z-index: 5;
   }
-  /* ===== MOBILE ESPECIAL (VÍDEO AJUSTADO) ===== */
+  /* ===== MOBILE ESPE (VÍDEO AJUSTADO) ===== */
   @media (max-width: 768px) {
     .hero {
       height: 6cqh;
@@ -651,9 +652,8 @@ body {
     }
     .hero-media video {
       margin-top: -0;
-      height: 27vh; /* Altura ideal no celular */
+      height: 26vh; /* Altura ideal no celular */
       width: 100%;
-      /* height: 100%; */
       object-fit: cover;
       object-position: center;
     }
@@ -663,17 +663,20 @@ body {
       position: absolute;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 90%;
+      width: 140%;
     }
 
     .hero-content h1 {
-      margin-bottom: 40px;
-      font-size: 1.4rem;
-      line-height: 1.3rem;
+      margin-bottom: 150px;
+      font-size: 1.5rem;
+      line-height: 1.1rem;
     }
     /* Move o vídeo para baixo do header */
     .hero {
       margin-top: 75px; /* Aumente ou diminua se quiser */
+    }
+    .video-hero {
+      height: 230px;
     }
   }
 }
