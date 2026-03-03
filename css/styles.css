@@ -13,7 +13,13 @@
   --maxWidth: 1200px;
 }
 body {
-  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    Arial;
   color: #fff;
   line-height: 1.5;
   background: #111;
@@ -567,6 +573,43 @@ body {
 .whatsapp-button img {
   width: 35px;
   height: 35px;
+}
+#planos-motorista {
+  padding-bottom: 120px;
+}
+#planos-motorista .planos-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+#planos-motorista .plano-card {
+  background: #111;
+  border: 1px solid #222;
+  padding: 30px;
+  border-radius: 16px;
+  width: 280px;
+  text-align: left;
+  transition: 0.3s;
+}
+
+#planos-motorista .plano-card:hover {
+  transform: translateY(-5px);
+  border-color: #00a859;
+}
+
+#planos-motorista .plano-valor {
+  font-size: 28px;
+  font-weight: bold;
+  color: #00a859;
+}
+
+#planos-motorista .destaque {
+  border: 2px solid #00a859;
+}
+#planos-motorista .section-subtitle {
+  color: #ffffff;
 }
 
 @keyframes pulse {
