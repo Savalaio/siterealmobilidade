@@ -611,6 +611,21 @@ body {
 #planos-motorista .section-subtitle {
   color: #ffffff;
 }
+.btn-destaque {
+    background: linear-gradient(135deg, #00c853, #009624);
+    color: #fff;
+    padding: 10px 22px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(0, 200, 83, 0.4);
+    transition: all 0.3s ease;
+}
+
+.btn-destaque:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 200, 83, 0.6);
+}
 
 @keyframes pulse {
   0% {
